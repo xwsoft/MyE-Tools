@@ -22,7 +22,7 @@
       <registry />
     </searchSequence>
     <classPath>
-      <archive location="../dist/MyE-Tools.jar" failOnError="false" />
+      <archive location="./MyE-Tools.jar" failOnError="false" />
     </classPath>
     <nativeLibraryDirectories />
   </java>

@@ -1,0 +1,8 @@
+Liunx下运行方法
+
+使用前需要确认防火墙开放25120，25122端口。
+
+1.确认已安装好了JDK1.5以上版本。
+
+2.在命令状态下进入MyEGatewaySetup.jar所以路径
+执行：java -jar MyEGatewaySetup.jar

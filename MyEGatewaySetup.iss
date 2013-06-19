@@ -4,7 +4,7 @@
 #define MyAppName "MyEGatewaySetup"
 #define MyAppVersion "1.0"
 #define MyAppPublisher "MyE"
-#define MyAppURL "http://www.myenergydomain.com/"
+#define MyAppURL "http://www.myenergydomain.com.cn/"
 #define MyAppExeName "MyEGatewaySetup.exe"
 
 [Setup]
@@ -23,19 +23,19 @@ DefaultDirName={pf}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 OutputDir=C:\MyE-Tools
 OutputBaseFilename=MyEGatewaySetup
-SetupIconFile=E:\Dropbox\MyE-Project\MyE-Tools\icon.ico
+SetupIconFile=D:\Documents\GitHub\MyE-Tools\icon.ico
 Compression=lzma
 SolidCompression=yes
 
 [Languages]
-Name: "english"; MessagesFile: "compiler:Languages\English.isl"
-
+;Name: "english"; MessagesFile: "compiler:Languages\English.isl"
+Name: cn; MessagesFile: "compiler:Default.isl"
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked; OnlyBelowVersion: 0,6.1
 
 [Files]
-Source: "E:\Dropbox\MyE-Project\MyE-Tools\store\MyEGatewaySetup.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\Dropbox\MyE-Project\MyE-Tools\store\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "D:\Documents\GitHub\MyE-Tools\setup\MyEGatewaySetup.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Documents\GitHub\MyE-Tools\setup\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; 注意: 不要在任何共享系统文件上使用“Flags: ignoreversion”
 
 [Icons]
