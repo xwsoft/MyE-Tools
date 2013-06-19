@@ -75,7 +75,7 @@ public class Advanced1 extends AbstractWin {
         lb_subnet.setFont(resUtil.getFont());
         lb_default_gateway.setFont(resUtil.getFont());
         lb_dns.setFont(resUtil.getFont());
-
+        sel_dhcp.setModel(new javax.swing.DefaultComboBoxModel(new String[] {ResourceUtil.getResource("enabled"), ResourceUtil.getResource("disabled") }));
         btn_search.setIcon(new javax.swing.ImageIcon(getClass().getResource(ResourceUtil.getResource("img_search"))));
         btn_back.setIcon(new javax.swing.ImageIcon(getClass().getResource(ResourceUtil.getResource("img_back"))));
         btn_apply.setIcon(new javax.swing.ImageIcon(getClass().getResource(ResourceUtil.getResource("img_apply"))));
@@ -301,7 +301,7 @@ public class Advanced1 extends AbstractWin {
 
         jPanel5.add(panel_wizzard_img, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 25, -1, -1));
 
-        btn_search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mye/tools/src/Search.png"))); // NOI18N
+        btn_search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mye/tools/src/search1.png"))); // NOI18N
         btn_search.setBorder(null);
         btn_search.setBorderPainted(false);
         btn_search.addMouseListener(new java.awt.event.MouseAdapter() {
