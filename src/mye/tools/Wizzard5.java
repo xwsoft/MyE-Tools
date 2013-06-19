@@ -14,7 +14,7 @@ import javax.swing.JLabel;
  * @author Administrator
  */
 public class Wizzard5 extends AbstractWin {
-
+    public JLabel lb_img_step;
     /**
      * Creates new form Wizzard4
      */
@@ -25,20 +25,38 @@ public class Wizzard5 extends AbstractWin {
         JLabel lb_img_wizzard = new JLabel(imgWizzard);
         lb_img_wizzard.setBounds(0,0,imgWizzard.getIconWidth(),imgWizzard.getIconHeight());
         panel_wizzard_img.add(lb_img_wizzard);
-        
-        ImageIcon imgStep = new ImageIcon(getClass().getResource("/mye/tools/src/step3.png"));//背景图片
-        JLabel lb_img_step = new JLabel(imgStep);
-        lb_img_step.setBounds(0,0,imgStep.getIconWidth(),imgStep.getIconHeight());
-        panel_step_img.add(lb_img_step);
-        
+                
         ImageIcon imgHome3 = new ImageIcon(getClass().getResource("/mye/tools/src/home3.png"));//背景图片
         JLabel lb_img_Home3 = new JLabel(imgHome3);
         lb_img_Home3.setBounds(0,0,imgHome3.getIconWidth(),imgHome3.getIconHeight());
         jPanel1.add(lb_img_Home3);   
         
         this.getContentPane().setBackground(Color.white);
+        initI18N();
     }
+    public void initI18N(){
+        baseInitI18N();
+        if(lb_img_step!=null){
+            panel_step_img.remove(lb_img_step);
+        }
+        ImageIcon imgStep = new ImageIcon(getClass().getResource(ResourceUtil.getResource("img_setup3")));//背景图片
+        lb_img_step = new JLabel(imgStep);
+        lb_img_step.setBounds(0,0,imgStep.getIconWidth(),imgStep.getIconHeight());
+        panel_step_img.add(lb_img_step);
+        
+        ResourceUtil resUtil = new ResourceUtil();
+        String wizard = resUtil.getResource("wizzard");
+        String wizard5_title1 = resUtil.getResource("wizard5_title1");
+        
+        lb_wizard.setText(wizard);
+        lb_title1.setText(wizard5_title1);
 
+        
+        lb_wizard.setFont(resUtil.getFontDialog12());
+        lb_title1.setFont(resUtil.getFont());
+        btn_done.setIcon(new javax.swing.ImageIcon(getClass().getResource(resUtil.getResource("img_done"))));
+
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -50,13 +68,13 @@ public class Wizzard5 extends AbstractWin {
 
         jPanel3 = new javax.swing.JPanel();
         btn_done = new javax.swing.JButton();
-        label2 = new java.awt.Label();
         jPanel1 = new javax.swing.JPanel();
+        lb_title1 = new javax.swing.JLabel();
         panel_top = new javax.swing.JPanel();
         btn_close = new javax.swing.JButton();
         btn_minwindow = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lb_wizard = new javax.swing.JLabel();
         panel_wizzard_img = new javax.swing.JPanel();
         panel_step_img = new javax.swing.JPanel();
 
@@ -88,10 +106,6 @@ public class Wizzard5 extends AbstractWin {
         });
         jPanel3.add(btn_done, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 320, -1, -1));
 
-        label2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        label2.setText("Now your MyE Smart Home Gateway is ready to go!");
-        jPanel3.add(label2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
-
         jPanel1.setBackground(java.awt.Color.white);
         jPanel1.setPreferredSize(new java.awt.Dimension(332, 226));
 
@@ -107,6 +121,11 @@ public class Wizzard5 extends AbstractWin {
         );
 
         jPanel3.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, -1, 229));
+
+        lb_title1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lb_title1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lb_title1.setText("Now your MyE Smart Home Gateway is ready to go!");
+        jPanel3.add(lb_title1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 530, -1));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(174, 76, 551, 350));
 
@@ -156,9 +175,9 @@ public class Wizzard5 extends AbstractWin {
         jPanel4.setBackground(java.awt.Color.white);
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
-        jLabel1.setText("Wizard");
-        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 0, -1, -1));
+        lb_wizard.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
+        lb_wizard.setText("Wizard");
+        jPanel4.add(lb_wizard, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 0, -1, -1));
 
         panel_wizzard_img.setBackground(java.awt.Color.white);
 
@@ -233,13 +252,13 @@ public class Wizzard5 extends AbstractWin {
     }//GEN-LAST:event_btn_minwindowActionPerformed
 
     private void btn_doneMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_doneMouseExited
-       btn_done.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mye/tools/src/Done.png"))); // NOI18N
+       btn_done.setIcon(new javax.swing.ImageIcon(getClass().getResource(new ResourceUtil().getResource("img_done")))); // NOI18N
         btn_done.setBorder(null);
         btn_done.setBorderPainted(false);
     }//GEN-LAST:event_btn_doneMouseExited
 
     private void btn_doneMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_doneMouseMoved
-        btn_done.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mye/tools/src/Done2.png"))); // NOI18N
+        btn_done.setIcon(new javax.swing.ImageIcon(getClass().getResource(new ResourceUtil().getResource("img_done2")))); // NOI18N
         btn_done.setBorder(null);
         btn_done.setBorderPainted(false);
     }//GEN-LAST:event_btn_doneMouseMoved
@@ -289,11 +308,11 @@ public class Wizzard5 extends AbstractWin {
     private javax.swing.JButton btn_close;
     private javax.swing.JButton btn_done;
     private javax.swing.JButton btn_minwindow;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private java.awt.Label label2;
+    private javax.swing.JLabel lb_title1;
+    private javax.swing.JLabel lb_wizard;
     private javax.swing.JPanel panel_step_img;
     private javax.swing.JPanel panel_top;
     private javax.swing.JPanel panel_wizzard_img;

@@ -19,7 +19,7 @@ import javax.swing.JLabel;
  * @author Administrator
  */
 public class Wizzard1 extends AbstractWin {
-
+    public JLabel lb_img_step;
     /**
      * Creates new form Wizzard1
      */
@@ -31,11 +31,11 @@ public class Wizzard1 extends AbstractWin {
         lb_img_wizzard.setBounds(0,0,imgWizzard.getIconWidth(),imgWizzard.getIconHeight());
         panel_wizzard_img.add(lb_img_wizzard);
         
-        ImageIcon imgStep = new ImageIcon(getClass().getResource("/mye/tools/src/step1.png"));//背景图片
+/*        ImageIcon imgStep = new ImageIcon(getClass().getResource(new ResourceUtil().getResource("img_setup1")));//背景图片
         JLabel lb_img_step = new JLabel(imgStep);
         lb_img_step.setBounds(0,0,imgStep.getIconWidth(),imgStep.getIconHeight());
         panel_step_img.add(lb_img_step);
-        
+        */
         ImageIcon imgHome2 = new ImageIcon(getClass().getResource("/mye/tools/src/home2.png"));//背景图片
         JLabel lb_img_Home2 = new JLabel(imgHome2);
         lb_img_Home2.setBounds(0,0,imgHome2.getIconWidth(),imgHome2.getIconHeight());
@@ -43,8 +43,39 @@ public class Wizzard1 extends AbstractWin {
         
         this.getContentPane().setBackground(Color.white);
         this.setBackground(Color.white);
+        initI18N();
     }
+    public void initI18N(){
+        baseInitI18N();
+        if(lb_img_step!=null){
+            panel_step_img.remove(lb_img_step);
+        }
+        ImageIcon imgStep = new ImageIcon(getClass().getResource(ResourceUtil.getResource("img_setup1")));//背景图片
+        lb_img_step = new JLabel(imgStep);
+        lb_img_step.setBounds(0,0,imgStep.getIconWidth(),imgStep.getIconHeight());
+        panel_step_img.add(lb_img_step);
+        
+        ResourceUtil resUtil = new ResourceUtil();
+        String wizard = resUtil.getResource("wizzard");
+        String wizard1_title1 = ResourceUtil.getResource("wizard1_title1");
+        String wizard1_title2 = resUtil.getResource("wizard1_title2");
+        String wizard1_title3 = resUtil.getResource("wizard1_title3");
 
+        lb_wizard.setText(wizard);
+        lb_title1.setText(wizard1_title1);
+        lb_title2.setText(wizard1_title2);
+        lb_next.setText(wizard1_title3);
+
+        
+        lb_wizard.setFont(ResourceUtil.getFontDialog12());
+        
+        lb_title1.setFont(ResourceUtil.getFont());
+        lb_title2.setFont(resUtil.getFont());
+        lb_next.setFont(resUtil.getFont12());
+        
+        btn_next.setIcon(new javax.swing.ImageIcon(getClass().getResource(resUtil.getResource("img_next"))));
+        btn_back.setIcon(new javax.swing.ImageIcon(getClass().getResource(resUtil.getResource("img_back"))));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -55,16 +86,16 @@ public class Wizzard1 extends AbstractWin {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lb_wizard = new javax.swing.JLabel();
         panel_wizzard_img = new javax.swing.JPanel();
         panel_step_img = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        label1 = new java.awt.Label();
-        label2 = new java.awt.Label();
-        label3 = new java.awt.Label();
         btn_next = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         btn_back = new javax.swing.JButton();
+        lb_next = new javax.swing.JLabel();
+        lb_title1 = new javax.swing.JLabel();
+        lb_title2 = new javax.swing.JLabel();
         panel_top = new javax.swing.JPanel();
         btn_minwindow = new javax.swing.JButton();
         btn_close = new javax.swing.JButton();
@@ -77,9 +108,9 @@ public class Wizzard1 extends AbstractWin {
         jPanel2.setBackground(java.awt.Color.white);
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
-        jLabel1.setText("Wizard");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 0, -1, -1));
+        lb_wizard.setFont(new java.awt.Font("宋体", 1, 12)); // NOI18N
+        lb_wizard.setText("Wizard");
+        jPanel2.add(lb_wizard, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 0, -1, -1));
 
         panel_wizzard_img.setBackground(java.awt.Color.white);
 
@@ -115,18 +146,6 @@ public class Wizzard1 extends AbstractWin {
 
         jPanel3.setBackground(java.awt.Color.white);
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        label1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        label1.setText("Make sure the MyE Smart Home Gateway has been powered up and connected to your home internet router.");
-        jPanel3.add(label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 592, 20));
-
-        label2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        label2.setText("When you are ready, click");
-        jPanel3.add(label2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 22, 140, 20));
-
-        label3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        label3.setText("Next.");
-        jPanel3.add(label3, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 20, -1, -1));
 
         btn_next.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mye/tools/src/Next.png"))); // NOI18N
         btn_next.setBorder(null);
@@ -181,6 +200,18 @@ public class Wizzard1 extends AbstractWin {
             }
         });
         jPanel3.add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 320, -1, 26));
+
+        lb_next.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        lb_next.setText("Next.");
+        jPanel3.add(lb_next, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, -1, 22));
+
+        lb_title1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lb_title1.setText("Make sure the MyE Smart Home Gateway has been powered up and connected to your home internet router.");
+        jPanel3.add(lb_title1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 20));
+
+        lb_title2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lb_title2.setText("When you are ready, click");
+        jPanel3.add(lb_title2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, -1, 20));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 83, 590, -1));
 
@@ -246,6 +277,7 @@ public class Wizzard1 extends AbstractWin {
         MyETools.win1.setVisible(false);
         MyETools.wizzard1.setVisible(false);
         MyETools.wizzard2.setVisible(true);
+        MyETools.wizzard2.initI18N();
         MyETools.wizzard3.setVisible(false);
         MyETools.wizzard4.setVisible(false);
         MyETools.wizzard5.setVisible(false);
@@ -254,6 +286,7 @@ public class Wizzard1 extends AbstractWin {
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
         MyETools.win2.setVisible(false);
         MyETools.win1.setVisible(true);
+        MyETools.win1.initI18N();
         MyETools.wizzard1.setVisible(false);
         MyETools.wizzard2.setVisible(false);
         MyETools.wizzard3.setVisible(false);
@@ -262,25 +295,25 @@ public class Wizzard1 extends AbstractWin {
     }//GEN-LAST:event_btn_backActionPerformed
 
     private void btn_backMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_backMouseMoved
-        btn_back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mye/tools/src/Back2.png"))); // NOI18N
+        btn_back.setIcon(new javax.swing.ImageIcon(getClass().getResource(new ResourceUtil().getResource("img_back2")))); // NOI18N
         btn_back.setBorder(null);
         btn_back.setBorderPainted(false);
     }//GEN-LAST:event_btn_backMouseMoved
 
     private void btn_backMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_backMouseExited
-        btn_back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mye/tools/src/Back.png"))); // NOI18N
+        btn_back.setIcon(new javax.swing.ImageIcon(getClass().getResource(new ResourceUtil().getResource("img_back")))); // NOI18N
         btn_back.setBorder(null);
         btn_back.setBorderPainted(false);
     }//GEN-LAST:event_btn_backMouseExited
 
     private void btn_nextMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_nextMouseMoved
-        btn_next.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mye/tools/src/Next2.png"))); // NOI18N
+        btn_next.setIcon(new javax.swing.ImageIcon(getClass().getResource(new ResourceUtil().getResource("img_next2")))); // NOI18N
         btn_next.setBorder(null);
         btn_next.setBorderPainted(false);
     }//GEN-LAST:event_btn_nextMouseMoved
 
     private void btn_nextMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_nextMouseExited
-        btn_next.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mye/tools/src/Next.png"))); // NOI18N
+        btn_next.setIcon(new javax.swing.ImageIcon(getClass().getResource(new ResourceUtil().getResource("img_next")))); // NOI18N
         btn_next.setBorder(null);
         btn_next.setBorderPainted(false);
     }//GEN-LAST:event_btn_nextMouseExited
@@ -363,13 +396,13 @@ public class Wizzard1 extends AbstractWin {
     private javax.swing.JButton btn_close;
     private javax.swing.JButton btn_minwindow;
     private javax.swing.JButton btn_next;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private java.awt.Label label1;
-    private java.awt.Label label2;
-    private java.awt.Label label3;
+    private javax.swing.JLabel lb_next;
+    private javax.swing.JLabel lb_title1;
+    private javax.swing.JLabel lb_title2;
+    private javax.swing.JLabel lb_wizard;
     private javax.swing.JPanel panel_step_img;
     private javax.swing.JPanel panel_top;
     private javax.swing.JPanel panel_wizzard_img;

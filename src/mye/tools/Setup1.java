@@ -5,6 +5,7 @@
 package mye.tools;
 
 import java.awt.Color;
+import java.util.Locale;
 import javax.swing.*;
 
 /**
@@ -39,7 +40,31 @@ public class Setup1 extends AbstractWin {
         jPanel1.add(lb_img_Home1);   
         
         this.getContentPane().setBackground(Color.white);
+        ResourceUtil._local = Locale.SIMPLIFIED_CHINESE;//Locale.ENGLISH
+        initI18N();
     }
+    
+    public void initI18N(){
+        baseInitI18N();
+        ResourceUtil resUtil = new ResourceUtil();
+        String wizzard = ResourceUtil.getResource("wizzard");
+        String advanced = ResourceUtil.getResource("advanced");
+        String setup1_title = ResourceUtil.getResource("setup1_title");
+        String setup1_title2 = " "+ResourceUtil.getResource("setup1_title2");
+  
+        jRadioButton1.setText(wizzard);
+        jRadioButton2.setText(advanced);
+        jLabel1.setText(setup1_title);
+        jLabel2.setText(setup1_title2);
+        
+        jLabel1.setFont(ResourceUtil.getFontTitle());
+        jLabel2.setFont(ResourceUtil.getFontTitle());
+        jRadioButton1.setFont(ResourceUtil.getFont());
+        jRadioButton2.setFont(ResourceUtil.getFont());
+
+        btn_next.setIcon(new javax.swing.ImageIcon(getClass().getResource(ResourceUtil.getResource("img_next"))));
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -62,6 +87,7 @@ public class Setup1 extends AbstractWin {
         panel_top = new javax.swing.JPanel();
         btn_minwindow = new javax.swing.JButton();
         btn_close = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(java.awt.Color.white);
@@ -78,15 +104,18 @@ public class Setup1 extends AbstractWin {
         jRadioButton2.setText("Advanced");
 
         jRadioButton1.setBackground(java.awt.Color.white);
-        jRadioButton1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jRadioButton1.setFont(new java.awt.Font("宋体", 0, 15)); // NOI18N
         jRadioButton1.setSelected(true);
-        jRadioButton1.setText("Wizard");
+        jRadioButton1.setText("wizzard");
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel2.setText("Management System");
+        jLabel2.setFont(new java.awt.Font("宋体", 1, 17)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel2.setText(" Management System");
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel1.setText("Thank you for purchasing MyE Home Energy");
+        jLabel1.setFont(new java.awt.Font("宋体", 1, 16)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("欢迎使用脉恩多能智慧家庭系统");
+        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel1.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
         btn_next.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mye/tools/src/Next.png"))); // NOI18N
@@ -140,56 +169,54 @@ public class Setup1 extends AbstractWin {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(119, 119, 119)
-                        .addComponent(btn_next))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButton1)
-                            .addComponent(jRadioButton2))
-                        .addGap(35, 35, 35)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(panel_advanced_img, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(panel_wizzard_img, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1)))
-                .addContainerGap(12, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(119, 119, 119)
+                                .addComponent(btn_next))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(57, 57, 57)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jRadioButton1)
+                                    .addComponent(jRadioButton2))
+                                .addGap(35, 35, 35)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(panel_advanced_img, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(panel_wizzard_img, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 54, Short.MAX_VALUE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
+                        .addGap(42, 42, 42)
                         .addComponent(panel_wizzard_img, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2)
                         .addGap(57, 57, 57)
                         .addComponent(jRadioButton1)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(panel_advanced_img, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(45, 45, 45)
-                        .addComponent(jRadioButton2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                        .addComponent(jRadioButton2))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(panel_advanced_img, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(btn_next)
                 .addGap(24, 24, 24))
         );
 
         jRadioButton2.getAccessibleContext().setAccessibleName("advanced");
-        jRadioButton1.getAccessibleContext().setAccessibleName("wizzard");
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, 330, -1));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 97, 330, 330));
 
         jPanel1.setBackground(java.awt.Color.white);
         jPanel1.setPreferredSize(new java.awt.Dimension(388, 367));
@@ -250,6 +277,14 @@ public class Setup1 extends AbstractWin {
 
         getContentPane().add(panel_top, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 735, 37));
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "中文", "English" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 70, -1, -1));
+
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-735)/2, (screenSize.height-440)/2, 735, 440);
     }// </editor-fold>//GEN-END:initComponents
@@ -259,12 +294,14 @@ public class Setup1 extends AbstractWin {
           MyETools.win2.setVisible(false);
           MyETools.win1.setVisible(false);
           MyETools.wizzard1.setVisible(true);
+          MyETools.wizzard1.initI18N();
           MyETools.wizzard2.setVisible(false);
           MyETools.wizzard3.setVisible(false);
           MyETools.wizzard4.setVisible(false);
           MyETools.wizzard5.setVisible(false);
         }else{
           MyETools.win2.setVisible(true);
+          MyETools.win2.initI18N();
           MyETools.win1.setVisible(false);
           MyETools.wizzard1.setVisible(false);
           MyETools.wizzard2.setVisible(false);
@@ -278,13 +315,13 @@ public class Setup1 extends AbstractWin {
     }//GEN-LAST:event_btn_nextActionPerformed
 
     private void btn_nextMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_nextMouseMoved
-        btn_next.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mye/tools/src/Next2.png"))); // NOI18N
+        btn_next.setIcon(new javax.swing.ImageIcon(getClass().getResource(new ResourceUtil().getResource("img_next2")))); // NOI18N
         btn_next.setBorder(null);
         btn_next.setBorderPainted(false);
     }//GEN-LAST:event_btn_nextMouseMoved
 
     private void btn_nextMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_nextMouseExited
-        btn_next.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mye/tools/src/Next.png"))); // NOI18N
+        btn_next.setIcon(new javax.swing.ImageIcon(getClass().getResource(new ResourceUtil().getResource("img_next")))); // NOI18N
         btn_next.setBorder(null);
         btn_next.setBorderPainted(false);
     }//GEN-LAST:event_btn_nextMouseExited
@@ -320,6 +357,16 @@ public class Setup1 extends AbstractWin {
     private void btn_minwindowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_minwindowActionPerformed
         this.setExtendedState(JFrame.ICONIFIED);
     }//GEN-LAST:event_btn_minwindowActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        System.out.println(jComboBox1.getSelectedIndex());
+        if(jComboBox1.getSelectedIndex()==0){
+            ResourceUtil._local = Locale.SIMPLIFIED_CHINESE;
+        }else{
+            ResourceUtil._local = Locale.ENGLISH;
+        }
+        initI18N();
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -366,6 +413,7 @@ public class Setup1 extends AbstractWin {
     private javax.swing.JButton btn_close;
     private javax.swing.JButton btn_minwindow;
     private javax.swing.JButton btn_next;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

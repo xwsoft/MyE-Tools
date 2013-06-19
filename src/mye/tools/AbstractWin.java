@@ -7,6 +7,7 @@ package mye.tools;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Point;
+import java.util.Locale;
 import javax.swing.*;
 
 /**
@@ -15,51 +16,68 @@ import javax.swing.*;
  */
 public class AbstractWin extends javax.swing.JFrame {
 
+    public ImageIcon background = new ImageIcon(getClass().getResource(ResourceUtil.getResource("img_bg")));//背景图片
+    public JLabel label;
     /**
      * Creates new form NewJFrame
      */
     public AbstractWin() {
         initComponents();
-        ImageIcon background = new ImageIcon(getClass().getResource("/mye/tools/src/bg.png"));//背景图片     
+//        ResourceUtil resUtil = new ResourceUtil();
+//        String img_bg = resUtil.getResource("img_bg");
+//        ImageIcon background = new ImageIcon(getClass().getResource(img_bg));//背景图片     
         //设背景
-        JLabel label = new JLabel(background);//把背景图片显示在一个标签里面  
-        label.setBounds(0,0,background.getIconWidth(),background.getIconHeight());  
-        JPanel imagePanel   =   (JPanel)this.getContentPane();  
-        imagePanel.setOpaque(false);  
+        label = new JLabel(background);//把背景图片显示在一个标签里面  
+        label.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());
+        JPanel imagePanel = (JPanel) this.getContentPane();
+        imagePanel.setOpaque(false);
         //把背景图片添加到分层窗格的最底层作为背景                
-        this.getLayeredPane().add(label,new Integer(Integer.MIN_VALUE));          
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
-        this.setSize(background.getIconWidth(),background.getIconHeight());      
+        this.getLayeredPane().add(label, new Integer(Integer.MIN_VALUE));
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setSize(background.getIconWidth(), background.getIconHeight());
         setDragable();
         this.getContentPane().setBackground(Color.white);
+    }
+
+    public void baseInitI18N() {
+        this.getLayeredPane().remove(label);
+        ResourceUtil resUtil = new ResourceUtil();
+        String img_bg = resUtil.getResource("img_bg");
+        background = new ImageIcon(getClass().getResource(img_bg));//背景图片    
+        label = new JLabel(background);//把背景图片显示在一个标签里面  
+        label.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());               
+        this.getLayeredPane().add(label, new Integer(Integer.MIN_VALUE));
     }
     
     Point loc = null;
     Point tmp = null;
     boolean isDragged = false;
-    private void setDragable()
-    {
-        this.addMouseListener(new java.awt.event.MouseAdapter(){
-            public void mouseReleased(java.awt.event.MouseEvent e){
+
+    private void setDragable() {
+        this.addMouseListener(new java.awt.event.MouseAdapter() {
+
+            public void mouseReleased(java.awt.event.MouseEvent e) {
                 isDragged = false;
                 setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
             }
-            public void mousePressed(java.awt.event.MouseEvent e){
+
+            public void mousePressed(java.awt.event.MouseEvent e) {
                 tmp = new Point(e.getX(), e.getY());
                 isDragged = true;
                 setCursor(new Cursor(Cursor.MOVE_CURSOR));
             }
         });
-        this.addMouseMotionListener(new java.awt.event.MouseMotionAdapter()
-        {
-            public void mouseDragged(java.awt.event.MouseEvent e){
-                if (isDragged){
-                    loc = new Point(getLocation().x + e.getX() - tmp.x,getLocation().y + e.getY() - tmp.y);
-                   setLocation(loc);
+        this.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+
+            public void mouseDragged(java.awt.event.MouseEvent e) {
+                if (isDragged) {
+                    loc = new Point(getLocation().x + e.getX() - tmp.x, getLocation().y + e.getY() - tmp.y);
+                    setLocation(loc);
                 }
             }
         });
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

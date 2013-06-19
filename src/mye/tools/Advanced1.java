@@ -40,8 +40,47 @@ public class Advanced1 extends AbstractWin {
         txt_dns.setDocument(new MyEAliasDoc(15));
         txt_ip.setDocument(new MyEAliasDoc(15));
         this.getContentPane().setBackground(Color.white);
+        initI18N();
     }
+    public void initI18N(){
+        baseInitI18N();
+        ResourceUtil resUtil = new ResourceUtil();
+        String device = resUtil.getResource("device");
+        String advanced = resUtil.getResource("advanced");
+        String gateway_mac = resUtil.getResource("gateway_mac");
+        String alias = resUtil.getResource("alias");
+        String dhcp = resUtil.getResource("dhcp");
+        String ipaddress = resUtil.getResource("ipaddress");
+        String subnet_mask = resUtil.getResource("subnet_mask");
+        String default_gateway = resUtil.getResource("default_gateway");
+        String dns = resUtil.getResource("dns");
+        
+        
+        lb_advanced.setText(advanced);
+        lb_device.setText(device);
+        lb_mac.setText(gateway_mac);		
+        lb_alias.setText(alias);		
+        lb_dhcp.setText(dhcp);		
+        lb_ip.setText(ipaddress);		
+        lb_subnet.setText(subnet_mask);		
+        lb_default_gateway.setText(default_gateway);		
+        lb_dns.setText(dns);		
+               
+        lb_advanced.setFont(resUtil.getFontDialog12());
+        lb_device.setFont(resUtil.getFontDialog12());
+        lb_mac.setFont(resUtil.getFont());
+        lb_alias.setFont(resUtil.getFont());
+        lb_dhcp.setFont(resUtil.getFont());
+        lb_ip.setFont(resUtil.getFont());
+        lb_subnet.setFont(resUtil.getFont());
+        lb_default_gateway.setFont(resUtil.getFont());
+        lb_dns.setFont(resUtil.getFont());
 
+        btn_search.setIcon(new javax.swing.ImageIcon(getClass().getResource(resUtil.getResource("img_search"))));
+        btn_back.setIcon(new javax.swing.ImageIcon(getClass().getResource(resUtil.getResource("img_back"))));
+        btn_apply.setIcon(new javax.swing.ImageIcon(getClass().getResource(resUtil.getResource("img_apply"))));
+        btn_done.setIcon(new javax.swing.ImageIcon(getClass().getResource(resUtil.getResource("img_close"))));        
+    }
     private void setConfigInfo(MConfig config){
         txt_name.setText(config.getName());
         txt_mac.setText(config.getPhysicalAddress());
@@ -91,25 +130,25 @@ public class Advanced1 extends AbstractWin {
         listDevice = new javax.swing.JList();
         jPanel4 = new javax.swing.JPanel();
         sel_dhcp = new javax.swing.JComboBox();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lb_dhcp = new javax.swing.JLabel();
+        lb_ip = new javax.swing.JLabel();
         txt_ip = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lb_subnet = new javax.swing.JLabel();
+        lb_default_gateway = new javax.swing.JLabel();
+        lb_dns = new javax.swing.JLabel();
         txt_dns = new javax.swing.JTextField();
         txt_gateway = new javax.swing.JTextField();
         txt_subnetmask = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        lb_alias = new javax.swing.JLabel();
+        lb_mac = new javax.swing.JLabel();
         txt_mac = new javax.swing.JTextField();
         txt_name = new javax.swing.JTextField();
-        label1 = new java.awt.Label();
         btn_done = new javax.swing.JButton();
         btn_apply = new javax.swing.JButton();
         btn_back = new javax.swing.JButton();
+        lb_device = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lb_advanced = new javax.swing.JLabel();
         panel_wizzard_img = new javax.swing.JPanel();
         btn_search = new javax.swing.JButton();
         panel_top = new javax.swing.JPanel();
@@ -140,45 +179,41 @@ public class Advanced1 extends AbstractWin {
         sel_dhcp.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Enabled", "Disabled" }));
         jPanel4.add(sel_dhcp, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 95, 208, -1));
 
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel2.setText("DHCP");
-        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 95, -1, -1));
+        lb_dhcp.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lb_dhcp.setText("DHCP");
+        jPanel4.add(lb_dhcp, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 95, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel3.setText("IP address");
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
+        lb_ip.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lb_ip.setText("IP address");
+        jPanel4.add(lb_ip, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
         jPanel4.add(txt_ip, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 130, 208, -1));
 
-        jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel4.setText("Subnet mask");
-        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 165, -1, -1));
+        lb_subnet.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lb_subnet.setText("Subnet mask");
+        jPanel4.add(lb_subnet, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 165, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel5.setText("Default gateway");
-        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, -1));
+        lb_default_gateway.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lb_default_gateway.setText("Default gateway");
+        jPanel4.add(lb_default_gateway, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel6.setText("DNS server");
-        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 235, -1, -1));
+        lb_dns.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lb_dns.setText("DNS server");
+        jPanel4.add(lb_dns, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 235, -1, -1));
         jPanel4.add(txt_dns, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 235, 208, -1));
         jPanel4.add(txt_gateway, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 200, 208, -1));
         jPanel4.add(txt_subnetmask, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 165, 208, -1));
 
-        jLabel7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel7.setText("Alias");
-        jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
+        lb_alias.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lb_alias.setText("Alias");
+        jPanel4.add(lb_alias, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel8.setText("MyE Gateway MAC");
-        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 25, -1, -1));
+        lb_mac.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lb_mac.setText("MyE Gateway MAC");
+        jPanel4.add(lb_mac, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 25, -1, -1));
         jPanel4.add(txt_mac, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 25, 208, -1));
         jPanel4.add(txt_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 60, 208, -1));
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(232, 13, -1, -1));
-
-        label1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        label1.setText("Device");
-        jPanel3.add(label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(57, 13, -1, -1));
 
         btn_done.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mye/tools/src/Close.png"))); // NOI18N
         btn_done.setBorder(null);
@@ -237,14 +272,18 @@ public class Advanced1 extends AbstractWin {
         });
         jPanel3.add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 320, -1, -1));
 
+        lb_device.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lb_device.setText("Device");
+        jPanel3.add(lb_device, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
+
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 75, -1, 350));
 
         jPanel5.setBackground(java.awt.Color.white);
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel1.setText("Advanced");
-        jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, -1, -1));
+        lb_advanced.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lb_advanced.setText("Advanced");
+        jPanel5.add(lb_advanced, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, -1, -1));
 
         panel_wizzard_img.setBackground(java.awt.Color.white);
 
@@ -379,13 +418,13 @@ public class Advanced1 extends AbstractWin {
     }//GEN-LAST:event_btn_minwindowActionPerformed
 
     private void btn_doneMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_doneMouseExited
-        btn_done.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mye/tools/src/Close.png"))); // NOI18N
+        btn_done.setIcon(new javax.swing.ImageIcon(getClass().getResource(new ResourceUtil().getResource("img_close")))); // NOI18N
         btn_done.setBorder(null);
         btn_done.setBorderPainted(false);
     }//GEN-LAST:event_btn_doneMouseExited
 
     private void btn_doneMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_doneMouseMoved
-        btn_done.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mye/tools/src/Close2.png"))); // NOI18N
+        btn_done.setIcon(new javax.swing.ImageIcon(getClass().getResource(new ResourceUtil().getResource("img_close2")))); // NOI18N
         btn_done.setBorder(null);
         btn_done.setBorderPainted(false);
     }//GEN-LAST:event_btn_doneMouseMoved
@@ -395,13 +434,13 @@ public class Advanced1 extends AbstractWin {
     }//GEN-LAST:event_btn_doneActionPerformed
 
     private void btn_applyMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_applyMouseExited
-        btn_apply.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mye/tools/src/Apply.png"))); // NOI18N
+        btn_apply.setIcon(new javax.swing.ImageIcon(getClass().getResource(new ResourceUtil().getResource("img_apply")))); // NOI18N
         btn_apply.setBorder(null);
         btn_apply.setBorderPainted(false);
     }//GEN-LAST:event_btn_applyMouseExited
 
     private void btn_applyMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_applyMouseMoved
-        btn_apply.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mye/tools/src/Apply2.png"))); // NOI18N
+        btn_apply.setIcon(new javax.swing.ImageIcon(getClass().getResource(new ResourceUtil().getResource("img_apply2")))); // NOI18N
         btn_apply.setBorder(null);
         btn_apply.setBorderPainted(false);
     }//GEN-LAST:event_btn_applyMouseMoved
@@ -413,7 +452,7 @@ public class Advanced1 extends AbstractWin {
         String gateway = Util.validIP(txt_gateway.getText());
         String dns = Util.validIP(txt_dns.getText());
         if(ip==null){          
-           JOptionPane.showMessageDialog(null,"You enter the IP address is invalid. ");
+           JOptionPane.showMessageDialog(null,new ResourceUtil().getResource("ip_alert"));
            txt_ip.setFocusable(true);
            return;
        }else{
@@ -421,14 +460,14 @@ public class Advanced1 extends AbstractWin {
         }
         
        if(subnetmask==null){          
-           JOptionPane.showMessageDialog(null,"You enter the Subnet mask is invalid. ");
+           JOptionPane.showMessageDialog(null,new ResourceUtil().getResource("subnet_alert"));
            txt_subnetmask.setFocusable(true);
            return;
        }else{
             txt_subnetmask.setText(subnetmask);
         }
        if(gateway==null){          
-           JOptionPane.showMessageDialog(null,"You enter the Default gateway is invalid. ");
+           JOptionPane.showMessageDialog(null,new ResourceUtil().getResource("gateway_alert"));
            txt_gateway.setFocusable(true);
            return;
        }else{
@@ -436,7 +475,7 @@ public class Advanced1 extends AbstractWin {
         }
        
         if(dns==null){          
-           JOptionPane.showMessageDialog(null,"You enter the DNS server is invalid. ");
+           JOptionPane.showMessageDialog(null,new ResourceUtil().getResource("dns_alert"));
            txt_dns.setFocusable(true);
            return;
        }else{
@@ -469,13 +508,13 @@ public class Advanced1 extends AbstractWin {
     }//GEN-LAST:event_btn_applyActionPerformed
 
     private void btn_backMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_backMouseExited
-        btn_back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mye/tools/src/Back.png"))); // NOI18N
+        btn_back.setIcon(new javax.swing.ImageIcon(getClass().getResource(new ResourceUtil().getResource("img_back")))); // NOI18N
         btn_back.setBorder(null);
         btn_back.setBorderPainted(false);
     }//GEN-LAST:event_btn_backMouseExited
 
     private void btn_backMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_backMouseMoved
-        btn_back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mye/tools/src/Back2.png"))); // NOI18N
+        btn_back.setIcon(new javax.swing.ImageIcon(getClass().getResource(new ResourceUtil().getResource("img_back2")))); // NOI18N
         btn_back.setBorder(null);
         btn_back.setBorderPainted(false);
     }//GEN-LAST:event_btn_backMouseMoved
@@ -483,6 +522,7 @@ public class Advanced1 extends AbstractWin {
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
         MyETools.win2.setVisible(false);
         MyETools.win1.setVisible(true);
+        MyETools.win1.initI18N();
         MyETools.wizzard1.setVisible(false);
         MyETools.wizzard2.setVisible(false);
         MyETools.wizzard3.setVisible(false);
@@ -531,13 +571,13 @@ public class Advanced1 extends AbstractWin {
     }//GEN-LAST:event_btn_searchActionPerformed
 
     private void btn_searchMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_searchMouseMoved
-        btn_search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mye/tools/src/Search2.png"))); // NOI18N
+        btn_search.setIcon(new javax.swing.ImageIcon(getClass().getResource(new ResourceUtil().getResource("img_search2")))); // NOI18N
         btn_search.setBorder(null);
         btn_search.setBorderPainted(false);
     }//GEN-LAST:event_btn_searchMouseMoved
 
     private void btn_searchMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_searchMouseExited
-        btn_search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mye/tools/src/search.png"))); // NOI18N
+        btn_search.setIcon(new javax.swing.ImageIcon(getClass().getResource(new ResourceUtil().getResource("img_search")))); // NOI18N
         btn_search.setBorder(null);
         btn_search.setBorderPainted(false);
     }//GEN-LAST:event_btn_searchMouseExited
@@ -590,19 +630,19 @@ public class Advanced1 extends AbstractWin {
     private javax.swing.JButton btn_done;
     private javax.swing.JButton btn_minwindow;
     private javax.swing.JButton btn_search;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane2;
-    private java.awt.Label label1;
+    private javax.swing.JLabel lb_advanced;
+    private javax.swing.JLabel lb_alias;
+    private javax.swing.JLabel lb_default_gateway;
+    private javax.swing.JLabel lb_device;
+    private javax.swing.JLabel lb_dhcp;
+    private javax.swing.JLabel lb_dns;
+    private javax.swing.JLabel lb_ip;
+    private javax.swing.JLabel lb_mac;
+    private javax.swing.JLabel lb_subnet;
     private javax.swing.JList listDevice;
     private javax.swing.JPanel panel_top;
     private javax.swing.JPanel panel_wizzard_img;
