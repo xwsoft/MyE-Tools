@@ -40,7 +40,12 @@ public class Setup1 extends AbstractWin {
         jPanel1.add(lb_img_Home1);   
         
         this.getContentPane().setBackground(Color.white);
-        ResourceUtil._local = Locale.SIMPLIFIED_CHINESE;//Locale.ENGLISH
+        ResourceUtil._local = Locale.getDefault();//Locale.CHINESE;//Locale.ENGLISH
+        if(ResourceUtil._local.getLanguage().equals("zh")){
+            jComboBox1.setSelectedIndex(0);
+        }else{
+            jComboBox1.setSelectedIndex(1);
+        }
         initI18N();
     }
     

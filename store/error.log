@@ -7,7 +7,7 @@ java.lang.ExceptionInInitializerError
 	at com.exe4j.runtime.WinLauncher.main(Unknown Source)
 Caused by: java.lang.NullPointerException
 	at javax.swing.ImageIcon.<init>(ImageIcon.java:167)
-	at mye.tools.Advanced1.initComponents(Advanced1.java:303)
+	at mye.tools.Advanced1.initComponents(Advanced1.java:304)
 	at mye.tools.Advanced1.<init>(Advanced1.java:30)
 	at mye.tools.MyETools.<clinit>(MyETools.java:22)
 	... 6 more

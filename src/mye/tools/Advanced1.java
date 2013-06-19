@@ -76,10 +76,10 @@ public class Advanced1 extends AbstractWin {
         lb_default_gateway.setFont(resUtil.getFont());
         lb_dns.setFont(resUtil.getFont());
 
-        btn_search.setIcon(new javax.swing.ImageIcon(getClass().getResource(resUtil.getResource("img_search"))));
-        btn_back.setIcon(new javax.swing.ImageIcon(getClass().getResource(resUtil.getResource("img_back"))));
-        btn_apply.setIcon(new javax.swing.ImageIcon(getClass().getResource(resUtil.getResource("img_apply"))));
-        btn_done.setIcon(new javax.swing.ImageIcon(getClass().getResource(resUtil.getResource("img_close"))));        
+        btn_search.setIcon(new javax.swing.ImageIcon(getClass().getResource(ResourceUtil.getResource("img_search"))));
+        btn_back.setIcon(new javax.swing.ImageIcon(getClass().getResource(ResourceUtil.getResource("img_back"))));
+        btn_apply.setIcon(new javax.swing.ImageIcon(getClass().getResource(ResourceUtil.getResource("img_apply"))));
+        btn_done.setIcon(new javax.swing.ImageIcon(getClass().getResource(ResourceUtil.getResource("img_close"))));        
     }
     private void setConfigInfo(MConfig config){
         txt_name.setText(config.getName());
@@ -282,8 +282,9 @@ public class Advanced1 extends AbstractWin {
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lb_advanced.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lb_advanced.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lb_advanced.setText("Advanced");
-        jPanel5.add(lb_advanced, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, -1, -1));
+        jPanel5.add(lb_advanced, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, -1));
 
         panel_wizzard_img.setBackground(java.awt.Color.white);
 
@@ -300,7 +301,7 @@ public class Advanced1 extends AbstractWin {
 
         jPanel5.add(panel_wizzard_img, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 25, -1, -1));
 
-        btn_search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mye/tools/src/search.png"))); // NOI18N
+        btn_search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mye/tools/src/Search.png"))); // NOI18N
         btn_search.setBorder(null);
         btn_search.setBorderPainted(false);
         btn_search.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -320,7 +321,7 @@ public class Advanced1 extends AbstractWin {
         });
         jPanel5.add(btn_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
 
-        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 83, 130, 270));
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 270));
 
         panel_top.setOpaque(false);
         panel_top.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
