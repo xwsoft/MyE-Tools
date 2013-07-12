@@ -20,6 +20,7 @@ public class Wizzard2 extends AbstractWin implements Runnable{
     boolean flagwhile=true;
     @Override
     public void run() {
+        System.out.println(" Wizzard2 run");
         while(flagwhile){
             if(this.jProgressBar1.getValue()<this.jProgressBar1.getMaximum()){
                 this.jProgressBar1.setValue(this.jProgressBar1.getValue()+1); 

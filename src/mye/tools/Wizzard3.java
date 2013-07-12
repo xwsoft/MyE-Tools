@@ -7,6 +7,7 @@ package mye.tools;
 import java.awt.Color;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -392,7 +393,7 @@ public class Wizzard3 extends AbstractWin {
         String gateway = Util.validIP(txt_gateway.getText());
         String dns = Util.validIP(txt_dns.getText());
         if (ip == null) {
-            JOptionPane.showMessageDialog(null, "You enter the IP address is invalid. ");
+            JOptionPane.showMessageDialog(null, new ResourceUtil().getResource("ip_alert"));
             txt_ip.setFocusable(true);
             return;
         } else {
@@ -400,14 +401,14 @@ public class Wizzard3 extends AbstractWin {
         }
 
         if (subnetmask == null) {
-            JOptionPane.showMessageDialog(null, "You enter the Subnet mask is invalid. ");
+            JOptionPane.showMessageDialog(null, new ResourceUtil().getResource("subnet_alert"));
             txt_subnetmask.setFocusable(true);
             return;
         } else {
             txt_subnetmask.setText(subnetmask);
         }
         if (gateway == null) {
-            JOptionPane.showMessageDialog(null, "You enter the Default gateway is invalid. ");
+            JOptionPane.showMessageDialog(null,new ResourceUtil().getResource("gateway_alert"));
             txt_gateway.setFocusable(true);
             return;
         } else {
@@ -415,7 +416,7 @@ public class Wizzard3 extends AbstractWin {
         }
 
         if (dns == null) {
-            JOptionPane.showMessageDialog(null, "You enter the DNS server is invalid. ");
+            JOptionPane.showMessageDialog(null,new ResourceUtil().getResource("dns_alert"));
             txt_dns.setFocusable(true);
             return;
         } else {
@@ -555,7 +556,13 @@ public class Wizzard3 extends AbstractWin {
     }//GEN-LAST:event_btn_cancelMouseMoved
 
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
-        MyETools.win2.setVisible(false);
+        try{
+           MyETools.listConfig = new ArrayList();
+            ByteBuffer buffer = ByteBuffer.wrap(Constants.SEARCH);
+            MyETools.channel.send(buffer, new InetSocketAddress("255.255.255.255",Constants.SEND_PORT));
+        }catch (Exception ex) {
+            Logger.getLogger(BroadcastUdp.class.getName()).log(Level.SEVERE, null, ex);
+        }        MyETools.win2.setVisible(false);
         MyETools.win1.setVisible(false);
         MyETools.wizzard1.setVisible(false);
         MyETools.wizzard2.setVisible(true);
